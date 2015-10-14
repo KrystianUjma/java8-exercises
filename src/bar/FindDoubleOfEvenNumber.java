@@ -30,8 +30,8 @@ public class FindDoubleOfEvenNumber {
 
         System.out.println(result);
 
-        // to taki iterator
-        // Optional - mozemy nic nie znalezc
+        // kind of iterator
+        // Optional - we could find nothing
         System.out.println(values.stream()
                 .filter(e -> e > 3)
                 .filter(e -> e % 2 == 0)
@@ -40,10 +40,12 @@ public class FindDoubleOfEvenNumber {
                 .get());
 
 
-        // uzycie statycznych metod
-
+        // static methods
+// method reference
         System.out.println(values.stream()
-                .filter(FindDoubleOfEvenNumber::isGreaterThan3)
+//                .filter(FindDoubleOfEvenNumber::isGreaterThan3)
+                .filter(e -> isGreaterThan3(e))
+                .filter(e -> isGreaterThan3(e * 2)) // method reference can't be used
                 .filter(FindDoubleOfEvenNumber::isEven)
                 .map(e -> e * 2)
                 .findFirst()

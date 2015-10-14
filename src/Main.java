@@ -1,13 +1,66 @@
+import example2.Domain;
 import foo.Email;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        Domain d = new Domain();
+        d.setName("foo");
+
+        Domain d2 = new Domain();
+        d2.setName("bar");
+
+        ArrayList<Domain> list = new ArrayList<>();
+        list.add(d);
+        list.add(d2);
+
+        Comparator<Domain> comparing = Comparator.comparing(new Function<Domain, String>() {
+            @Override
+            public String apply(Domain domain) {
+                return domain.getName();
+            }
+        });
+
+
+        Comparator<String> comp = Comparator.comparing(new Function<String, Integer>() {
+            @Override
+            public Integer apply(String s) {
+                return s.length();
+            }
+        });
+
+        List<String> f = Arrays.asList("aaa", "bb");
+
+        f.forEach(System.out::print);
+        System.out.println();
+        Collections.sort(f,comp);
+        f.forEach(System.out::print);
+        System.out.println();
+
+
+        Collections.sort(Arrays.asList(1, 2, 3, 4, 5), new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1.compareTo(o2);
+            }
+        });
+
+
+
+        list.forEach((obj) -> System.out.print(obj.getName()));
+        System.out.println("--------");
+        Collections.sort(list, comparing);
+        System.out.println("--------");
+        list.forEach((obj) -> System.out.print(obj.getName()));
+        System.out.println("--------");
+        System.out.println("--------");
+
+
         System.out.println("Hello World!");
 
         List<Integer> strings = Arrays.asList(1,2,3,4,5,6,7,8,9,10);

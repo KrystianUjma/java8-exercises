@@ -50,6 +50,8 @@ public class LazyExample {
 
         // lazy, no terminal operation
         // compiler can make
+        // mutability - compiler leaves it poorly optimized
+        // with streams it can make more optimizations
         Stream<Integer> temp = values.stream()
                 .filter(LazyExample::isGreaterThan3)
                 .filter(LazyExample::isEven)
