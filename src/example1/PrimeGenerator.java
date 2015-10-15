@@ -24,7 +24,7 @@ public class PrimeGenerator {
 //        return number >1;
 
         //declarative - what
-        return number > 1 && IntStream.range(2, number-1)
+        return number > 1 && IntStream.range(2, number)
                                       .noneMatch(index -> number % index == 0);
     }
 
